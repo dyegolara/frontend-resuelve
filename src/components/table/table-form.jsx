@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import TableActions from '../../actions/table-actions';
+
 class TableForm extends Component {
 
 	constructor() {
@@ -15,8 +17,8 @@ class TableForm extends Component {
 	};
 
 	addConcepto(event) {
-		
-	}
+		TableActions.addConcepto(event);
+	};
 
 	handleUpdate(evt){
 
