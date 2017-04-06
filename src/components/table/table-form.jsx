@@ -1,31 +1,80 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const TableForm = (props) => {
+class TableForm extends Component {
 
-	return (
-		<div
-			className="table__formRow"
-		>
-			<div className="table__textInputContainer table__textInputContainer--descripcion">
-				<input className="table__textInput table__textInput--descripcion" type="text"/>
-			</div>
-			<div className="table__textInputContainer">
-				<input className="table__textInput" type="text"/>
-			</div>
-			<div className="table__textInputContainer">
-				<input className="table__textInput" type="text"/>
-			</div>
-			<div className="table__textInputContainer">
-				<input className="table__textInput" type="text"/>
-			</div>
+	constructor() {
+		super();
+		this.state = {
+			description: '',
+			quantity: '',
+			units: '',
+			price: '',
+			total: 0
+		};
 
-			<span className="table__rowElement">Total</span>
-			<span className="table__rowElement">
-				<button>Agregar</button>
+	};
+
+	addConcepto(event) {
+		
+	}
+
+	handleUpdate(evt){
+
+		let state = this.state;
+
+		state[evt.target.id] = evt.target.value;
+		state.total = state.quantity * state.price;
+		this.setState(state);
+	}
+
+	render() {
+		return (
+			<div
+				className="table__formRow"
+			>
+				<div className="table__textInputContainer table__textInputContainer--descripcion">
+					<input
+						id="description"
+						className="table__textInput table__textInput--descripcion"
+						type="text"
+						value={this.state.description}
+					    onChange={this.handleUpdate.bind(this)}
+					/>
+				</div>
+				<div className="table__textInputContainer">
+					<input
+						id="quantity"
+						className="table__textInput"
+						type="text"
+					    value={this.state.quantity}
+					    onChange={this.handleUpdate.bind(this)}
+					/>
+				</div>
+				<div className="table__textInputContainer">
+					<input
+						id="units"
+						className="table__textInput"
+						type="text"
+					    value={this.state.units}
+					    onChange={this.handleUpdate.bind(this)}
+					/>
+				</div>
+				<div className="table__textInputContainer">
+					<input
+						id="price"
+						className="table__textInput"
+						type="text"
+					    value={this.state.price}
+					    onChange={this.handleUpdate.bind(this)}
+					/>
+				</div>
+
+				<span className="table__rowElement">{'$' + this.state.total}</span>
+				<span className="table__rowElement">
+				<button onClick={this.addConcepto.bind(this)}>Agregar</button>
 			</span>
-		</div>);
-};
+			</div>);
+	}
+}
 
 export default TableForm;
-
-//<input type="text" value={this.state.value} onChange={this.handleChange} />
