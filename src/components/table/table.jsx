@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TableRow from './table-row.jsx';
+import TableForm from './table-form.jsx';
 
 class Table extends Component {
 
@@ -23,6 +24,8 @@ class Table extends Component {
 				</div>
 
 				<TableRow/>
+
+				<TableForm/>
 
 			</div>
 		)

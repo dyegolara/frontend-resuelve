@@ -10,7 +10,7 @@
 	border: 1px solid #ddd;
 }
 .table__headElement {
-	flex: 1 1 auto;
+	flex: 1 1 0;
 	text-align: right;
 
 }
@@ -29,10 +29,31 @@
 	border: 1px solid #00d1b2;
 }
 .table__rowElement {
-	flex: 1 1 auto;
+	flex: 1 1 0;
 	text-align: right;
 }
 .table__rowElement--descripcion {
 	text-align: left;
 }
-
+.table__formRow {
+	display: flex;
+	justify-content: space-around;
+	padding: 1.5rem;
+	border: 1px solid #fff;
+	font-weight: bold;
+}
+.table__textInput {
+	flex: 0 1 auto;
+	width: 60%;
+}
+.table__textInput--descripcion {
+	flex: 0 1 auto;
+	width: 100%;
+}
+.table__textInputContainer {
+	display: flex;
+	justify-content: flex-end;
+}
+.table__textInputContainer--descripcion {
+	justify-content: flex-start;
+}
