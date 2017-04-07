@@ -46,10 +46,7 @@ class Table extends Component {
 				return (
 					<TableRow
 						key={key}
-						description={concepto.description}
-						quantity={concepto.quantity}
-						units={concepto.units}
-						price={concepto.price}
+						data={concepto}
 						grey={key % 2 === 0}
 					/>
 				)
