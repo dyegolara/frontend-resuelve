@@ -22,6 +22,7 @@ class TableForm extends Component {
 
 		let concepto = _.omit(this.state, 'total');
 		TableActions.addConcepto(concepto);
+		this.reset();
 	};
 
 	handleUpdate(evt){
@@ -31,9 +32,21 @@ class TableForm extends Component {
 		state[evt.target.id] = evt.target.value;
 		state.total = state.quantity * state.price;
 		this.setState(state);
+	};
+
+	reset(){
+		this.setState({
+			description: '',
+			quantity: '',
+			units: '',
+			price: '',
+			total: 0
+		});
 	}
 
 	render() {
+
+		console.log('state', this.state);
 		return (
 			<div className="table__row">
 				<div className="table__rowElement">
@@ -48,7 +61,7 @@ class TableForm extends Component {
 				<div className="table__rowElement">
 					<input
 						id="quantity"
-						type="text"
+						type="number"
 						className="table__textInput"
 					    value={this.state.quantity}
 					    onChange={this.handleUpdate}
@@ -57,7 +70,7 @@ class TableForm extends Component {
 				<div className="table__rowElement">
 					<input
 						id="units"
-						type="text"
+						type="number"
 						className="table__textInput"
 					    value={this.state.units}
 					    onChange={this.handleUpdate}
@@ -66,14 +79,15 @@ class TableForm extends Component {
 				<div className="table__rowElement">
 					<input
 						id="price"
-						type="text"
+						type="number"
 						className="table__textInput"
 					    value={this.state.price}
 					    onChange={this.handleUpdate}
+
 					/>
 				</div>
 
-				<span className="table__rowElement">{'$' + this.state.total}</span>
+				<span className="table__rowElement">${this.state.total}</span>
 				<span className="table__rowElement">
 				<button onClick={this.addConcepto}>Agregar</button>
 			</span>
