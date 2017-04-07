@@ -31,41 +31,39 @@ class TableForm extends Component {
 
 	render() {
 		return (
-			<div
-				className="table__formRow"
-			>
-				<div className="table__textInputContainer table__textInputContainer--descripcion">
+			<div className="table__row">
+				<div className="table__rowElement">
 					<input
 						id="description"
-						className="table__textInput table__textInput--descripcion"
+						className="table__textInput--descripcion"
 						type="text"
 						value={this.state.description}
 					    onChange={this.handleUpdate.bind(this)}
 					/>
 				</div>
-				<div className="table__textInputContainer">
+				<div className="table__rowElement">
 					<input
 						id="quantity"
-						className="table__textInput"
 						type="text"
+						className="table__textInput"
 					    value={this.state.quantity}
 					    onChange={this.handleUpdate.bind(this)}
 					/>
 				</div>
-				<div className="table__textInputContainer">
+				<div className="table__rowElement">
 					<input
 						id="units"
-						className="table__textInput"
 						type="text"
+						className="table__textInput"
 					    value={this.state.units}
 					    onChange={this.handleUpdate.bind(this)}
 					/>
 				</div>
-				<div className="table__textInputContainer">
+				<div className="table__rowElement">
 					<input
 						id="price"
-						className="table__textInput"
 						type="text"
+						className="table__textInput"
 					    value={this.state.price}
 					    onChange={this.handleUpdate.bind(this)}
 					/>
