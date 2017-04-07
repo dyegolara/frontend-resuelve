@@ -4,8 +4,8 @@ import _ from 'lodash';
 import TableRow from './table-row.jsx';
 import TableForm from './table-form.jsx';
 import TableFooter from './table-footer.jsx';
-import TableStore from '../../stores/table-store';
-import TableActions from '../../actions/table-actions';
+import TableStore from '../stores/table-store';
+import TableActions from '../actions/table-actions';
 
 //got this function from https://css-tricks.com/snippets/javascript/format-currency/
 function currency(n){n=parseFloat(n);return isNaN(n)?false:n.toFixed(2);}

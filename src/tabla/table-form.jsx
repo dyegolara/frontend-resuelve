@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import _ from 'lodash';
 import uuid from 'uuid';
 
-import TableActions from '../../actions/table-actions';
+import TableActions from '../actions/table-actions';
 
 class TableForm extends Component {
 
