@@ -44,13 +44,13 @@ class TableForm extends Component {
 			price: '',
 			total: 0
 		});
-	}
+	};
 
 	render() {
 
 		return (
-			<div className="table__row">
-				<div className="table__rowElement">
+			<div className="table__form">
+				<div className="table__rowElement table__rowElement--descripcion">
 					<input
 						id="description"
 						className="table__textInput table__textInput--descripcion"
@@ -84,11 +84,12 @@ class TableForm extends Component {
 						className="table__textInput"
 					    value={this.state.price}
 					    onChange={this.handleUpdate}
-
 					/>
 				</div>
 
-				<span className="table__rowElement">${this.state.total}</span>
+				<div className="table__rowElement total">
+					<span>$</span>{this.state.total}
+				</div>
 				<span className="table__rowElement">
 				<button onClick={this.addConcepto}>Agregar</button>
 			</span>

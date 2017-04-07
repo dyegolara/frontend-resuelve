@@ -61,9 +61,10 @@ class Table extends Component {
 						grey={key % 2 === 0}
 						removeConcepto={this.removeConcepto}
 					/>
-				)
+				);
 			})
 		);
+
 		return (
 			<div className="borderAll">
 				<h2 className="title">Conceptos</h2>

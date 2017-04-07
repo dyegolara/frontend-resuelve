@@ -24,15 +24,15 @@ class TableStore extends EventEmitter {
 
 	getConceptos() {
 		return this.conceptos;
-	}
+	};
 
 	setConcepto(concepto) {
 		this.conceptos.push(concepto)
-	}
+	};
 
 	removeConcepto(id) {
 		_.pullAllBy(this.conceptos, [{'id' : id}], 'id');
-	}
+	};
 }
 
 let tableStore = new TableStore();

@@ -9,8 +9,7 @@
 	font-weight: bold;
 }
 .title {
-	padding-left : 2rem;
-	margin-bottom : 3rem;
+	padding-left : 1rem;
 }
 
 .table__header {
@@ -22,17 +21,17 @@
 .table__headElement {
 	flex: 1 1 0;
 	text-align: right;
-
+	padding-right: 1rem;
 }
 .table__headElement--big {
+	flex: 2 1 0;
 	text-align: left;
-
+	padding-right: 1rem;
 }
 .table__row {
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5rem;
-	font-weight: bold;
 }
 .table__row--grey {
 	background-color: #eee;
@@ -43,12 +42,23 @@
 .table__rowElement {
 	flex: 1 1 0;
 	text-align: right;
+	padding-right: 1rem;
 }
 .table__rowElement--descripcion {
+	flex: 2 1 0;
 	text-align: left;
+}
+.table__form {
+	display: flex;
+	justify-content: space-around;
+	padding: 1.5rem;
 }
 .table__textInput {
 	text-align: right;
+	width: 70%;
+	border: 1px solid #bbb;
+	font-size: 1rem;
+	padding: 0.3rem;
 }
 .table__textInput:hover {
 	border: 1px solid #00d1b2;
@@ -78,4 +88,9 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
