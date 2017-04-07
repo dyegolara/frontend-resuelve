@@ -53,7 +53,7 @@ class TableForm extends Component {
 				<div className="table__rowElement">
 					<input
 						id="description"
-						className="table__textInput--descripcion"
+						className="table__textInput table__textInput--descripcion"
 						type="text"
 						value={this.state.description}
 					    onChange={this.handleUpdate}

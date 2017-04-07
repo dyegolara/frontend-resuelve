@@ -29,14 +29,13 @@
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5rem;
-	border: 1px solid #fff;
 	font-weight: bold;
 }
 .table__row--grey {
 	background-color: #eee;
 }
 .table__row--hoverable:hover {
-	border: 1px solid #00d1b2;
+	background-color: #b3f2e9;
 }
 .table__rowElement {
 	flex: 1 1 0;
@@ -47,6 +46,9 @@
 }
 .table__textInput {
 	text-align: right;
+}
+.table__textInput:hover {
+	border: 1px solid #00d1b2;
 }
 .table__textInput--descripcion {
 	width: 100%;
