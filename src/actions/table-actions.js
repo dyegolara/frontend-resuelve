@@ -1,5 +1,6 @@
 import AppDispatcher from '../dispatcher/app-dispatcher';
 
+// This action creator sends the type of action and the params (if any) to the dispatcher
 export default {
 
 	addConcepto(data){
@@ -31,4 +32,4 @@ export default {
 			actionType: 'PRINT'
 		});
 	}
-}
+};

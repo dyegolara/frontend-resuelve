@@ -22,6 +22,10 @@ class TableForm extends Component {
 
 	addConcepto() {
 
+		// Removes the total propierty from the object and ads a unique id
+		// before sending the add function
+		// so we can look for it later and delete tehe entry
+		// then resets the form
 		let concepto = _.omit(this.state, 'total');
 		concepto.id = uuid();
 		TableActions.addConcepto(concepto);
@@ -30,6 +34,9 @@ class TableForm extends Component {
 
 	handleUpdate(evt){
 
+		// When any change is done on the inputs, this updates its value,
+		// calculates the total, and sets the state
+		// so it gets ready to be sent to the store.
 		let state = this.state;
 
 		state[evt.target.id] = evt.target.value;
@@ -38,6 +45,8 @@ class TableForm extends Component {
 	};
 
 	reset(){
+
+		//Sets the component to its default state
 		this.setState({
 			description: '',
 			quantity: '',
@@ -49,6 +58,7 @@ class TableForm extends Component {
 
 	onBlurPrice(){
 
+		//When the price input is blurred, this formats it as currency
 		let state = this.state;
 
 		state.price = this.props.currency(state.price);
@@ -105,7 +115,7 @@ class TableForm extends Component {
 				<button onClick={this.addConcepto}>Agregar</button>
 			</span>
 			</div>);
-	}
+	};
 }
 
 export default TableForm;

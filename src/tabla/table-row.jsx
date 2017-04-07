@@ -1,10 +1,12 @@
 import React from 'react';
 
+// This is a stateless component
 const TableRow = (props) => {
 
 	let data = props.data;
 	return (
 		<div
+			//If the 'grey' prop is true, it adds the css class, otherwise, not.
 			className={"table__row table__row--hoverable bold " + (props.grey ? "table__row--grey" : "")}
 		>
 			<span className="table__rowElement table__rowElement--descripcion">

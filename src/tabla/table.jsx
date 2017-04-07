@@ -10,10 +10,11 @@ import TableActions from '../actions/table-actions';
 //got this function from https://css-tricks.com/snippets/javascript/format-currency/
 function currency(n){n=parseFloat(n);return isNaN(n)?false:n.toFixed(2);}
 
+
 function getCurrentState() {
 
 	let conceptos = TableStore.getConceptos();
-	return {conceptos : conceptos}
+	return {conceptos : conceptos};
 }
 
 class Table extends Component {
@@ -28,16 +29,20 @@ class Table extends Component {
 
 	componentDidMount() {
 
+		//Adds listener, when the Store changes, trigger the _onChange callback func
 		TableStore.addChangeListener(this._onChange);
 	};
 
 	componentWillUnmount() {
 
+		//Removes the listener, in this project it never happens
 		TableStore.removeChangeListener(this._onChange);
 	};
 
 	_onChange() {
 
+		//When the store changes, the state goes to it and pulls the updated data
+		//then sets it so the components reRender
 		let state = getCurrentState();
 		this.setState(state);
 	};
@@ -64,13 +69,16 @@ class Table extends Component {
 			return (concepto.quantity * concepto.price);
 		});
 
+		// Iterates over the conceptos array and adds a TableRow for each
 		let tableRows = (
 			_.map(conceptos, (concepto, key) => {
 				return (
 					<TableRow
 						key={key}
 						data={concepto}
-						grey={key % 2 === 0}
+						grey={key % 2 === 0} //the keys start from 0,
+							// so if x % 0 == 0, it passes true,
+							// otherwise, false to paint the background grey
 						removeConcepto={this.removeConcepto}
 						currency={currency}
 					/>

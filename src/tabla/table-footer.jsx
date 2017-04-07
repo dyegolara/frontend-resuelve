@@ -13,7 +13,7 @@ const TableFooter = (props) => {
 				</div>
 				<span className="table__rowElement"/>
 			</div>
-			<div className={"table__row"}>
+			<div className={"table__row table__row--grey"}>
 				<span className="table__footerElement"/>
 				<span className="table__rowElement">IVA (16%)</span>
 				<div className="table__rowElement total">
