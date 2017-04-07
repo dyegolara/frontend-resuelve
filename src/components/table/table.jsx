@@ -55,14 +55,8 @@ class Table extends Component {
 			})
 		);
 		return (
-			<div style={{
-				border: '1px solid black'
-
-			}}>
-				<h2 style={{
-					paddingLeft: '2rem',
-					marginBottom: '3rem'
-				}}>Conceptos</h2>
+			<div className="borderAll">
+				<h2 className="title">Conceptos</h2>
 				<div className="table__header">
 					<span className="table__headElement table__headElement--big">Descripción</span>
 					<span className="table__headElement">Cantidad</span>

@@ -2,6 +2,13 @@
 	padding: 3rem;
 	color: #666;
 }
+.borderAll {
+	border: 1px solid black;
+}
+.title {
+	padding-left : 2rem;
+	margin-bottom : 3rem;
+}
 
 .table__header {
 	display: flex;
