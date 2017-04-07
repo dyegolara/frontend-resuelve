@@ -7,6 +7,9 @@ import TableFooter from './table-footer.jsx';
 import TableStore from '../../stores/table-store';
 import TableActions from '../../actions/table-actions';
 
+//got this function from https://css-tricks.com/snippets/javascript/format-currency/
+function currency(n){n=parseFloat(n);return isNaN(n)?false:n.toFixed(2);}
+
 function getCurrentState() {
 
 	let conceptos = TableStore.getConceptos();
@@ -60,6 +63,7 @@ class Table extends Component {
 						data={concepto}
 						grey={key % 2 === 0}
 						removeConcepto={this.removeConcepto}
+						currency={currency}
 					/>
 				);
 			})
@@ -79,10 +83,13 @@ class Table extends Component {
 
 				{tableRows}
 
-				<TableForm/>
+				<TableForm
+					currency={currency}
+				/>
 
 				<TableFooter
 					subtotal={subtotal}
+					currency={currency}
 				/>
 			</div>
 		)

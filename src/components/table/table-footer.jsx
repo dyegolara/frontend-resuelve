@@ -9,7 +9,7 @@ const TableFooter = (props) => {
 				<span className="table__footerElement"/>
 				<span className="table__rowElement">Subtotal</span>
 				<div className="table__rowElement total">
-					<span>$</span>{props.subtotal}
+					<span>$</span>{props.currency(props.subtotal)}
 				</div>
 				<span className="table__rowElement">
 					<button>Borrar</button>
@@ -19,7 +19,7 @@ const TableFooter = (props) => {
 				<span className="table__footerElement"/>
 				<span className="table__rowElement">IVA (16%)</span>
 				<div className="table__rowElement total">
-					<span>$</span>{iva}
+					<span>$</span>{props.currency(iva)}
 				</div>
 				<span className="table__rowElement">
 					<button>Borrar</button>
@@ -29,7 +29,7 @@ const TableFooter = (props) => {
 				<span className="table__footerElement"/>
 				<span className="table__rowElement">Total</span>
 				<div className="table__rowElement total">
-					<span>$</span>{props.subtotal + iva}
+					<span>$</span>{props.currency(props.subtotal + iva)}
 				</div>
 				<span className="table__rowElement">
 					<button>Borrar</button>

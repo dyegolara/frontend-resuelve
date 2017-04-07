@@ -17,6 +17,7 @@ class TableForm extends Component {
 		};
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.addConcepto = this.addConcepto.bind(this);
+		this.onBlurPrice = this.onBlurPrice.bind(this);
 	};
 
 	addConcepto() {
@@ -32,7 +33,7 @@ class TableForm extends Component {
 		let state = this.state;
 
 		state[evt.target.id] = evt.target.value;
-		state.total = state.quantity * state.price;
+		state.total = this.props.currency(state.quantity * state.price);
 		this.setState(state);
 	};
 
@@ -44,6 +45,14 @@ class TableForm extends Component {
 			price: '',
 			total: 0
 		});
+	};
+
+	onBlurPrice(){
+
+		let state = this.state;
+
+		state.price = this.props.currency(state.price);
+		this.setState(state);
 	};
 
 	render() {
@@ -84,6 +93,7 @@ class TableForm extends Component {
 						className="table__textInput"
 					    value={this.state.price}
 					    onChange={this.handleUpdate}
+					    onBlur={this.onBlurPrice}
 					/>
 				</div>
 
