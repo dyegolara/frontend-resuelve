@@ -16,5 +16,21 @@ export default {
 			actionType: 'REMOVE',
 			data: data
 		});
+	},
+
+	resetAll(data){
+
+		AppDispatcher.handleAction({
+			actionType: 'RESET',
+			data: data
+		});
+	},
+
+	printAll(data){
+
+		AppDispatcher.handleAction({
+			actionType: 'PRINT',
+			data: data
+		});
 	}
 }

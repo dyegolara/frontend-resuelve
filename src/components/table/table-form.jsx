@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 
 import TableActions from '../../actions/table-actions';
 
@@ -13,11 +14,14 @@ class TableForm extends Component {
 			price: '',
 			total: 0
 		};
-
+		this.handleUpdate = this.handleUpdate.bind(this);
+		this.addConcepto = this.addConcepto.bind(this);
 	};
 
-	addConcepto(event) {
-		TableActions.addConcepto(event);
+	addConcepto() {
+
+		let concepto = _.omit(this.state, 'total');
+		TableActions.addConcepto(concepto);
 	};
 
 	handleUpdate(evt){
@@ -38,7 +42,7 @@ class TableForm extends Component {
 						className="table__textInput--descripcion"
 						type="text"
 						value={this.state.description}
-					    onChange={this.handleUpdate.bind(this)}
+					    onChange={this.handleUpdate}
 					/>
 				</div>
 				<div className="table__rowElement">
@@ -47,7 +51,7 @@ class TableForm extends Component {
 						type="text"
 						className="table__textInput"
 					    value={this.state.quantity}
-					    onChange={this.handleUpdate.bind(this)}
+					    onChange={this.handleUpdate}
 					/>
 				</div>
 				<div className="table__rowElement">
@@ -56,7 +60,7 @@ class TableForm extends Component {
 						type="text"
 						className="table__textInput"
 					    value={this.state.units}
-					    onChange={this.handleUpdate.bind(this)}
+					    onChange={this.handleUpdate}
 					/>
 				</div>
 				<div className="table__rowElement">
@@ -65,13 +69,13 @@ class TableForm extends Component {
 						type="text"
 						className="table__textInput"
 					    value={this.state.price}
-					    onChange={this.handleUpdate.bind(this)}
+					    onChange={this.handleUpdate}
 					/>
 				</div>
 
 				<span className="table__rowElement">{'$' + this.state.total}</span>
 				<span className="table__rowElement">
-				<button onClick={this.addConcepto.bind(this)}>Agregar</button>
+				<button onClick={this.addConcepto}>Agregar</button>
 			</span>
 			</div>);
 	}
