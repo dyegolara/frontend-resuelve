@@ -5,6 +5,9 @@
 .borderAll {
 	border: 1px solid black;
 }
+.bold {
+	font-weight: bold;
+}
 .title {
 	padding-left : 2rem;
 	margin-bottom : 3rem;
@@ -60,4 +63,19 @@
 }
 .table__textInputContainer--descripcion {
 	justify-content: flex-start;
+}
+.table__footer {
+	border-top: 1px solid black;
+}
+.table__footerElement {
+	flex: 4 0 0;
+	padding-right: 3rem;
+
+}
+
+.total {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+}
 }

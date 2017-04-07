@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import TableRow from './table-row.jsx';
 import TableForm from './table-form.jsx';
+import TableFooter from './table-footer.jsx';
 import TableStore from '../../stores/table-store';
 import TableActions from '../../actions/table-actions';
 
@@ -46,8 +47,11 @@ class Table extends Component {
 
 	render() {
 
-		console.log('state', this.state);
 		let conceptos = this.state.conceptos;
+		let subtotal = _.sumBy(conceptos, (concepto) => {
+			return (concepto.quantity * concepto.price);
+		});
+
 		let tableRows = (
 			_.map(conceptos, (concepto, key) => {
 				return (
@@ -76,6 +80,9 @@ class Table extends Component {
 
 				<TableForm/>
 
+				<TableFooter
+					subtotal={subtotal}
+				/>
 			</div>
 		)
 	}
