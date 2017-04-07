@@ -3,7 +3,7 @@ import _ from 'lodash';
 
 import AppDispatcher from '../dispatcher/app-dispatcher';
 
-class TableStore extends EventEmitter {
+class Store extends EventEmitter {
 
 	constructor() {
 		super();
@@ -43,7 +43,7 @@ class TableStore extends EventEmitter {
 	};
 }
 
-let tableStore = new TableStore();
+let TableStore = new Store();
 
 AppDispatcher.register(function (payload) {
 
@@ -51,23 +51,23 @@ AppDispatcher.register(function (payload) {
 
 	switch (action.actionType) {
 		case 'ADD' :
-			tableStore.setConcepto(action.data);
+			TableStore.setConcepto(action.data);
 			break;
 		case 'REMOVE' :
-			tableStore.removeConcepto(action.data);
+			TableStore.removeConcepto(action.data);
 			break;
 		case 'RESET' :
-			tableStore.reset();
+			TableStore.reset();
 			break;
 		case 'PRINT' :
-			tableStore.printToConsole();
+			TableStore.printToConsole();
 			break;
 		default :
 			break;
 	}
 
-	tableStore.emitChange();
+	TableStore.emitChange();
 	return true;
 });
 
-export default tableStore;
+export default TableStore;
