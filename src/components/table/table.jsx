@@ -38,7 +38,6 @@ class Table extends Component {
 
 	_onChange() {
 
-		console.log('state ', this.state);
 		let state = getCurrentState();
 		this.setState(state);
 	};
@@ -47,6 +46,16 @@ class Table extends Component {
 
 		TableActions.removeConcepto(id)
 	};
+
+	reset() {
+
+		TableActions.resetAll();
+	};
+
+	print() {
+
+		TableActions.printAll();
+	}
 
 	render() {
 
@@ -71,7 +80,23 @@ class Table extends Component {
 
 		return (
 			<div className="borderAll">
-				<h2 className="title">Conceptos</h2>
+				<div className="title">
+					<span className="title__text">Conceptos</span>
+					<div>
+						<button
+							className="title__button"
+						    onClick={this.reset}
+						>
+							Limpiar todo
+						</button>
+						<button
+							className="title__button"
+						    onClick={this.print}
+						>
+							Imprimir a consola
+						</button>
+					</div>
+				</div>
 				<div className="table__header">
 					<span className="table__headElement table__headElement--big">Descripción</span>
 					<span className="table__headElement">Cantidad</span>

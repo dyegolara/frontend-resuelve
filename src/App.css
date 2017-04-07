@@ -8,9 +8,22 @@
 .bold {
 	font-weight: bold;
 }
+
+
 .title {
-	padding-left : 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
 }
+.title__text {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.title__button {
+	margin: 1rem;
+}
+
 
 .table__header {
 	display: flex;
@@ -80,14 +93,15 @@
 .table__footerElement {
 	flex: 4 0 0;
 	padding-right: 3rem;
-
 }
+
 
 .total {
 	box-sizing: border-box;
 	display: flex;
 	justify-content: space-between;
 }
+
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {

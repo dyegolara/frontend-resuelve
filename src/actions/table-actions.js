@@ -18,19 +18,17 @@ export default {
 		});
 	},
 
-	resetAll(data){
+	resetAll(){
 
 		AppDispatcher.handleAction({
-			actionType: 'RESET',
-			data: data
+			actionType: 'RESET'
 		});
 	},
 
-	printAll(data){
+	printAll(){
 
 		AppDispatcher.handleAction({
-			actionType: 'PRINT',
-			data: data
+			actionType: 'PRINT'
 		});
 	}
 }

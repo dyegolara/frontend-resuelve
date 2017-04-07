@@ -33,6 +33,14 @@ class TableStore extends EventEmitter {
 	removeConcepto(id) {
 		_.pullAllBy(this.conceptos, [{'id' : id}], 'id');
 	};
+
+	reset() {
+		this.conceptos = [];
+	};
+
+	printToConsole() {
+		console.log(this.conceptos);
+	};
 }
 
 let tableStore = new TableStore();
@@ -49,8 +57,10 @@ AppDispatcher.register(function (payload) {
 			tableStore.removeConcepto(action.data);
 			break;
 		case 'RESET' :
+			tableStore.reset();
 			break;
 		case 'PRINT' :
+			tableStore.printToConsole();
 			break;
 		default :
 			break;
