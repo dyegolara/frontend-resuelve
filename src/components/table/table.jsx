@@ -50,6 +50,7 @@ class Table extends Component {
 						quantity={concepto.quantity}
 						units={concepto.units}
 						price={concepto.price}
+						grey={key % 2 === 0}
 					/>
 				)
 			})

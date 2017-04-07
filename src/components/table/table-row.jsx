@@ -4,7 +4,7 @@ const TableRow = (props) => {
 	
 	return (
 		<div
-			className="table__row table__row--hoverable"
+			className={"table__row table__row--hoverable " + (props.grey ? "table__row--grey" : "")}
 		>
 			<span className="table__rowElement table__rowElement--descripcion">
 				{props.description ? props.description : 'sin descripcion :('}
