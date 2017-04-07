@@ -11,9 +11,7 @@ const TableFooter = (props) => {
 				<div className="table__rowElement total">
 					<span>$</span>{props.currency(props.subtotal)}
 				</div>
-				<span className="table__rowElement">
-					<button>Borrar</button>
-				</span>
+				<span className="table__rowElement"/>
 			</div>
 			<div className={"table__row"}>
 				<span className="table__footerElement"/>
@@ -21,9 +19,7 @@ const TableFooter = (props) => {
 				<div className="table__rowElement total">
 					<span>$</span>{props.currency(iva)}
 				</div>
-				<span className="table__rowElement">
-					<button>Borrar</button>
-				</span>
+				<span className="table__rowElement"/>
 			</div>
 			<div className={"table__row table__footer bold"}>
 				<span className="table__footerElement"/>
@@ -31,9 +27,7 @@ const TableFooter = (props) => {
 				<div className="table__rowElement total">
 					<span>$</span>{props.currency(props.subtotal + iva)}
 				</div>
-				<span className="table__rowElement">
-					<button>Borrar</button>
-				</span>
+				<span className="table__rowElement"/>
 			</div>
 		</div>
 	);
