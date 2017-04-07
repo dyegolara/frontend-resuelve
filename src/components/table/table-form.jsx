@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
+import uuid from 'uuid';
 
 import TableActions from '../../actions/table-actions';
 
@@ -21,6 +22,7 @@ class TableForm extends Component {
 	addConcepto() {
 
 		let concepto = _.omit(this.state, 'total');
+		concepto.id = uuid();
 		TableActions.addConcepto(concepto);
 		this.reset();
 	};
@@ -46,7 +48,6 @@ class TableForm extends Component {
 
 	render() {
 
-		console.log('state', this.state);
 		return (
 			<div className="table__row">
 				<div className="table__rowElement">

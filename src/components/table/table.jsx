@@ -4,6 +4,7 @@ import _ from 'lodash';
 import TableRow from './table-row.jsx';
 import TableForm from './table-form.jsx';
 import TableStore from '../../stores/table-store';
+import TableActions from '../../actions/table-actions';
 
 function getCurrentState() {
 
@@ -18,6 +19,7 @@ class Table extends Component {
 		super();
 		this.state = getCurrentState();
 		this._onChange = this._onChange.bind(this);
+		this.removeConcepto = this.removeConcepto.bind(this);
 	}
 
 	componentDidMount() {
@@ -37,6 +39,11 @@ class Table extends Component {
 		this.setState(state);
 	};
 
+	removeConcepto(id) {
+
+		TableActions.removeConcepto(id)
+	};
+
 	render() {
 
 		console.log('state', this.state);
@@ -48,6 +55,7 @@ class Table extends Component {
 						key={key}
 						data={concepto}
 						grey={key % 2 === 0}
+						removeConcepto={this.removeConcepto}
 					/>
 				)
 			})

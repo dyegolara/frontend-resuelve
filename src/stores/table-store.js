@@ -1,4 +1,5 @@
 import {EventEmitter} from 'events';
+import _ from 'lodash';
 
 import AppDispatcher from '../dispatcher/app-dispatcher';
 
@@ -21,12 +22,16 @@ class TableStore extends EventEmitter {
 		this.removeListener('change', callback);
 	};
 
-	getConceptos(){
+	getConceptos() {
 		return this.conceptos;
 	}
 
-	setConceptos(concepto){
+	setConcepto(concepto) {
 		this.conceptos.push(concepto)
+	}
+
+	removeConcepto(id) {
+		_.pullAllBy(this.conceptos, [{'id' : id}], 'id');
 	}
 }
 
@@ -38,15 +43,17 @@ AppDispatcher.register(function (payload) {
 
 	switch (action.actionType) {
 		case 'ADD' :
-			tableStore.setConceptos(action.data);
+			tableStore.setConcepto(action.data);
 			break;
 		case 'REMOVE' :
+			tableStore.removeConcepto(action.data);
 			break;
 		case 'RESET' :
 			break;
 		case 'PRINT' :
 			break;
-		default : break;
+		default :
+			break;
 	}
 
 	tableStore.emitChange();

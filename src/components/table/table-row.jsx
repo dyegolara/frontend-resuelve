@@ -15,7 +15,7 @@ const TableRow = (props) => {
 			<span className="table__rowElement">${data.price ? data.price : 0}</span>
 			<span className="table__rowElement">${data.quantity * data.price}</span>
 			<span className="table__rowElement">
-				<button>Borrar</button>
+				<button onClick={e => {props.removeConcepto(data.id)}}>Borrar</button>
 			</span>
 		</div>);
 };
