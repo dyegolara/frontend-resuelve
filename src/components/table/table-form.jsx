@@ -66,6 +66,7 @@ class TableForm extends Component {
 						type="text"
 						value={this.state.description}
 					    onChange={this.handleUpdate}
+						maxLength={35}
 					/>
 				</div>
 				<div className="table__rowElement">
