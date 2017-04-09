@@ -7,8 +7,12 @@ import TableFooter from './table-footer.jsx';
 import TableStore from '../stores/table-store';
 import TableActions from '../actions/table-actions';
 
-//got this function from https://css-tricks.com/snippets/javascript/format-currency/
-function currency(n){n=parseFloat(n);return isNaN(n)?false:n.toFixed(2);}
+// Function to show numbers in currency format, i.e. '0.00'
+const currency = (n) => {
+
+	n = parseFloat(n);
+	return isNaN(n) ? false : n.toFixed(2);
+};
 
 
 function getCurrentState() {
