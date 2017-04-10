@@ -65,6 +65,7 @@
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5rem;
+	align-items: center;
 }
 .table__textInput {
 	text-align: right;

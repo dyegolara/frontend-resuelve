@@ -77,6 +77,7 @@ class TableForm extends Component {
 						value={this.state.description}
 					    onChange={this.handleUpdate}
 						maxLength={35}
+						placeholder="Descripción"
 					/>
 				</div>
 				<div className="table__rowElement">
@@ -86,6 +87,7 @@ class TableForm extends Component {
 						className="table__textInput"
 					    value={this.state.quantity}
 					    onChange={this.handleUpdate}
+						placeholder="0"
 					/>
 				</div>
 				<div className="table__rowElement">
@@ -95,9 +97,11 @@ class TableForm extends Component {
 						className="table__textInput"
 					    value={this.state.units}
 					    onChange={this.handleUpdate}
+						placeholder="0"
 					/>
 				</div>
 				<div className="table__rowElement">
+					<span>$ </span>
 					<input
 						id="price"
 						type="number"
@@ -105,6 +109,7 @@ class TableForm extends Component {
 					    value={this.state.price}
 					    onChange={this.handleUpdate}
 					    onBlur={this.onBlurPrice}
+						placeholder="0.00"
 					/>
 				</div>
 
