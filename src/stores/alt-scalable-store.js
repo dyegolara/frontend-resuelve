@@ -7,115 +7,109 @@ In this case if you substitute the path on table.jsx for the name of
 this file, it will work exactly the same.
 
 */
-import {EventEmitter} from 'events';
-import _ from 'lodash';
+import {EventEmitter} from 'events'
+import _ from 'lodash'
 
-import AppDispatcher from '../dispatcher/app-dispatcher';
+import AppDispatcher from '../dispatcher/app-dispatcher'
 
 class Store extends EventEmitter {
+  constructor () {
+    super()
+    this.registeredActions = {}
+    this.error = null
+  }
 
-	constructor() {
-		super();
-		this.registeredActions = {};
-		this.error = null;
-	}
+  emitChange () {
+    this.emit('change')
+  };
 
-	emitChange() {
-		this.emit('change');
-	};
+  addChangeListener (callback) {
+    this.on('change', callback)
+  };
 
-	addChangeListener(callback) {
-		this.on('change', callback);
-	};
+  removeChangeListener (callback) {
+    this.removeListener('change', callback)
+  };
 
-	removeChangeListener(callback) {
-		this.removeListener('change', callback);
-	};
+  static getInstance () {
+    let ClassName = this
+    this.instance = new ClassName()
+    this.instance.registerAll()
 
-	static getInstance() {
+    return this.instance
+  };
 
-		let className = this;
-		this.instance = new className();
-		this.instance.registerAll();
+  // Register all actions to Dispatcher
+  registerAll () {
+    let actions = _.keys(this.actions)
 
-		return this.instance;
-	};
+    actions.forEach((key) => {
+      let action = this.actions[key]
 
-	// Register all actions to Dispatcher
-	registerAll() {
+      // Keep the reference action each action handler
+      this.registeredActions[key] = AppDispatcher.register((payload) => {
+        let data = payload.action
+        let actionType = data.actionType
 
-		let actions = _.keys(this.actions);
+        if (actionType !== key) {
+          return true
+        }
 
-		actions.forEach((key) => {
+        // Invoke callback and emit change in the store only when the keys match
+        let triggerChange = action.call(this, data)
 
-			let action = this.actions[key];
+        // Allow the callback to return false to avoid triggering change event
+        if (triggerChange !== false) {
+          this.emitChange()
+        }
 
-			// Keep the reference action each action handler
-			this.registeredActions[key] = AppDispatcher.register((payload) => {
-
-				let data = payload.action;
-				let actionType = data.actionType;
-
-				if (actionType !== key) {
-					return true;
-				}
-
-				// Invoke callback and emit change in the store only when the keys match
-				let triggerChange = action.call(this, data);
-
-				// Allow the callback to return false to avoid triggering change event
-				if (triggerChange !== false) {
-					this.emitChange();
-				}
-
-				return true;
-			});
-		});
-	};
+        return true
+      })
+    })
+  };
 }
 
 class TableStore extends Store {
+  constructor () {
+    super()
+    this.conceptos = []
 
-	constructor() {
-		super();
-		this.conceptos = [];
+    this.actions = {
 
-		this.actions = {
+      ADD: (action) => {
+        this.setConcepto(action.data)
+      },
+      REMOVE: (action) => {
+        this.removeConcepto(action.data)
+      },
+      RESET: () => {
+        this.reset()
+      },
+      PRINT: () => {
+        this.printToConsole()
+      }
+    }
+  };
 
-			ADD: (action) => {
-				this.setConcepto(action.data);
-			},
-			REMOVE: (action) => {
-				this.removeConcepto(action.data);
-			},
-			RESET: () => {
-				this.reset();
-			},
-			PRINT: () => {
-				this.printToConsole();
-			}
-		}
-	};
+  getConceptos () {
+    return this.conceptos
+  };
 
-	getConceptos() {
-		return this.conceptos;
-	};
+  setConcepto (concepto) {
+    this.conceptos.push(concepto)
+  };
 
-	setConcepto(concepto) {
-		this.conceptos.push(concepto);
-	};
+  removeConcepto (id) {
+    _.pullAllBy(this.conceptos, [{'id': id}], 'id')
+  };
 
-	removeConcepto(id) {
-		_.pullAllBy(this.conceptos, [{'id': id}], 'id');
-	};
+  reset () {
+    this.conceptos = []
+  };
 
-	reset() {
-		this.conceptos = [];
-	};
-
-	printToConsole() {
-		console.log(this.conceptos);
-	};
+  printToConsole () {
+    console.log(this.conceptos)
+  };
 }
 
-export default TableStore.getInstance();
+export default TableStore.getInstance()

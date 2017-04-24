@@ -1,19 +1,18 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
-import Table from './tabla/table.jsx';
-import './App.css';
+import Table from './tabla/table.jsx'
+import './App.css'
 
 class App extends Component {
+  render () {
+    return (
+      <div className='App'>
 
-	render() {
-		return (
-			<div className="App">
+        <Table />
 
-				<Table/>
-
-			</div>
-		);
-	}
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App

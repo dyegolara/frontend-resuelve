@@ -1,80 +1,77 @@
-import {EventEmitter} from 'events';
-import _ from 'lodash';
+import {EventEmitter} from 'events'
+import _ from 'lodash'
 
-import AppDispatcher from '../dispatcher/app-dispatcher';
+import AppDispatcher from '../dispatcher/app-dispatcher'
 
 class Store extends EventEmitter {
+  constructor () {
+    super()
+    this.conceptos = [] // This is the default data when the app inits
+  };
 
-	constructor() {
-		super();
-		this.conceptos = []; //This is the default data when the app inits
-	};
+  emitChange () {
+    this.emit('change')
+  };
 
-	emitChange() {
-		this.emit('change');
-	};
+  addChangeListener (callback) {
+    this.on('change', callback)
+  };
 
-	addChangeListener(callback) {
-		this.on('change', callback);
-	};
+  removeChangeListener (callback) {
+    this.removeListener('change', callback)
+  };
 
-	removeChangeListener(callback) {
-		this.removeListener('change', callback);
-	};
+  getConceptos () {
+    return this.conceptos
+  };
 
-	getConceptos() {
-		return this.conceptos;
-	};
+  setConcepto (concepto) {
+    this.conceptos.push(concepto)
+  };
 
-	setConcepto(concepto) {
-		this.conceptos.push(concepto)
-	};
+  removeConcepto (id) {
+  // Iterates over conceptos array and looks for the passed id among the objects
+  // then deletes that entry
+    _.pullAllBy(this.conceptos, [{'id': id}], 'id')
+  };
 
-	removeConcepto(id) {
+  reset () {
+    this.conceptos = []
+  };
 
-		// Iterates over conceptos array and looks for the passed id among the objects
-		// then deletes that entry
-		_.pullAllBy(this.conceptos, [{'id' : id}], 'id');
-	};
-
-	reset() {
-		this.conceptos = [];
-	};
-
-	printToConsole() {
-		// Me hubiera gustado saber si habia un formato es especifico para imprimir los datos
-		console.log(this.conceptos);
-	};
+  printToConsole () {
+    // Me hubiera gustado saber si habia un formato es especifico para imprimir los datos
+    console.log(this.conceptos)
+  };
 }
 
-let TableStore = new Store();
+let TableStore = new Store()
 
 // When the Dispatcher dispatchs an action, this function looks what type was it
 // depending the type, it calls the store function
 // then emits a 'change' so the component can listen
 AppDispatcher.register(function (payload) {
+  let action = payload.action
 
-	let action = payload.action;
+  switch (action.actionType) {
+    case 'ADD' :
+      TableStore.setConcepto(action.data)
+      break
+    case 'REMOVE' :
+      TableStore.removeConcepto(action.data)
+      break
+    case 'RESET' :
+      TableStore.reset()
+      break
+    case 'PRINT' :
+      TableStore.printToConsole()
+      break
+    default :
+      break
+  }
 
-	switch (action.actionType) {
-		case 'ADD' :
-			TableStore.setConcepto(action.data);
-			break;
-		case 'REMOVE' :
-			TableStore.removeConcepto(action.data);
-			break;
-		case 'RESET' :
-			TableStore.reset();
-			break;
-		case 'PRINT' :
-			TableStore.printToConsole();
-			break;
-		default :
-			break;
-	}
+  TableStore.emitChange()
+  return true
+})
 
-	TableStore.emitChange();
-	return true;
-});
-
-export default TableStore;
+export default TableStore
